@@ -36,8 +36,7 @@ An interactive, full-stack Data Structures and Algorithms (DSA) platform that go
 
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/AKXX05/DSA-Interview-Coach.git
-cd DSA-Interview-Coach
+git clone [https://github.com/AKXX05/DSA-Interview-Coach.git](https://github.com/AKXX05/DSA-Interview-Coach.git)
 cd DSA-Interview-Coach
 2. Setup the Frontend:
 
@@ -57,9 +56,9 @@ uvicorn main:app --reload
 Environment Variables
 You will need to create .env files in both your frontend and backend directories.
 
+Backend (.env):
 
-**Backend (`.env`):**
-```env
+Code snippet
 CLAUDE_API_KEY=your_anthropic_key_here
 DATABASE_URL=your_supabase_postgres_url
 📈 Future Roadmap
@@ -76,10 +75,12 @@ Getting ready for internship season shouldn't require buying expensive courses o
 
 This platform is designed to mirror how real engineering interviews actually work. It pushes you to not just solve the problem, but to evolve it—starting from a brute-force approach, refining it into a better solution, and ultimately mastering the optimal code. All the while, the AI coach is there to challenge you with high-quality, conceptual follow-up questions, just like a real Senior Engineer would.
 
-✨ Tech is for everyone. Keep grinding. ✨
+<blockquote>
+  <h3 align="center">✨ <i>Tech is for everyone. Keep grinding.</i> ✨</h3>
+</blockquote>
 
-<div align="center">
+<p align="center">
   <b>Made with lots of love and faith by <a href="https://github.com/AKXX05">Alok Kumar</a></b>
   <br>
   <sub><sup>Empowering the next generation of engineers 🚀</sup></sub>
-</div>
+</p>
