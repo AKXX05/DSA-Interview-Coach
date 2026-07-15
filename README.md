@@ -56,9 +56,9 @@ uvicorn main:app --reload
 Environment Variables
 You will need to create .env files in both your frontend and backend directories.
 
-Backend (.env):
 
-Code snippet
+**Backend (`.env`):**
+```env
 CLAUDE_API_KEY=your_anthropic_key_here
 DATABASE_URL=your_supabase_postgres_url
 📈 Future Roadmap
@@ -68,22 +68,11 @@ DATABASE_URL=your_supabase_postgres_url
 
 [ ] Implement user authentication and progress heatmaps.
 
----
+🌟 The Vision Behind the Code
+I built this platform with a simple mission: to democratize technical interview prep.
 
-## 🌟 The Vision Behind the Code
+Getting ready for internship season shouldn't require buying expensive courses or premium subscriptions. I wanted to create a world-class, completely free environment for my friends, college peers, and any student out there fighting for a seat in tech.
 
-I built this platform with a simple mission: **to democratize technical interview prep.** 
+This platform is designed to mirror how real engineering interviews actually work. It pushes you to not just solve the problem, but to evolve it—starting from a brute-force approach, refining it into a better solution, and ultimately mastering the optimal code. All the while, the AI coach is there to challenge you with high-quality, conceptual follow-up questions, just like a real Senior Engineer would.
 
-Getting ready for internship season shouldn't require buying expensive courses or premium subscriptions. I wanted to create a world-class, completely free environment for my friends, college peers, and any student out there fighting for a seat in tech. 
-
-This platform is designed to mirror how real engineering interviews actually work. It pushes you to not just solve the problem, but to evolve it—starting from a **brute-force** approach, refining it into a **better** solution, and ultimately mastering the **optimal** code. All the while, the AI coach is there to challenge you with high-quality, conceptual follow-up questions, just like a real Senior Engineer would.
-
----
-
-> ### ✨ *Tech is for everyone. Keep grinding.* ✨
-
-<div align="center">
-  <b>Made with lots of love and faith by <a href="[https://github.com/AKXX05](https://github.com/AKXX05)">Alok Kumar</a></b>
-  <br>
-  <sub><sup>Empowering the next generation of engineers 🚀</sup></sub>
-</div>
+✨ Tech is for everyone. Keep grinding. ✨
