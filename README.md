@@ -82,16 +82,14 @@ This platform is designed to mirror how real engineering interviews actually wor
 
 ---
 
-<br>
-<p align="center">
+---
+
+<div align="center">
   <blockquote>
-    <h3 align="center">
-      ✨ <i>Tech is for everyone. Keep grinding.</i> ✨
-    </h3>
+    <h3>✨ <i>Tech is for everyone. Keep grinding.</i> ✨</h3>
   </blockquote>
-</p>
-<p align="center">
+  <br>
   <b>Made with lots of love and faith by <a href="https://github.com/AKXX05">Alok Kumar</a></b>
   <br>
   <sub><sup>Empowering the next generation of engineers</sup></sub>
-</p>
+</div>
