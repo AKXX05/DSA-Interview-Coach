@@ -3,6 +3,7 @@ venv/
 __pycache__/
 *.pyc
 .env
+connection.env
 
 # Frontend
 node_modules/
