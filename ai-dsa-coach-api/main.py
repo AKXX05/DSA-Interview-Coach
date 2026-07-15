@@ -86,11 +86,11 @@ async def run_code(submission: schemas.CodeSubmission, db: Session = Depends(get
     
     async with httpx.AsyncClient() as client:
         # Loop ONLY through the sample test cases
-        for index, test in enumerate(problem.sample_test_cases):
+        for index, test in enumerate(db_problem.sample_test_cases):
             try:
                 data = await execute_on_piston(
                     client, submission.code, submission.language, 
-                    test["input"], problem.time_limit, problem.memory_limit
+                    test["input"], db_problem.time_limit, db_problem.memory_limit
                 )
                 
                 run_data = data.get("run", {})
@@ -121,7 +121,7 @@ async def run_code(submission: schemas.CodeSubmission, db: Session = Depends(get
             except Exception as e:
                 raise HTTPException(status_code=500, detail=f"Execution failed: {str(e)}")
 
-    return {"status": "Success", "total_passed": len(problem.sample_test_cases), "results": results}
+    return {"status": "Success", "total_passed": len(db_problem.sample_test_cases), "results": results}
 
 
 # Endpoint 2: SUBMIT CODE (Runs both Sample AND Hidden cases)
