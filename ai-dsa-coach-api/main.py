@@ -605,6 +605,9 @@ Return ONLY a valid JSON object matching this exact schema without markdown form
     "cpp": "class Solution {{\\npublic:\\n    void solve() {{\\n    }}\\n}};",
     "java": "class Solution {{\\n    public void solve() {{\\n    }}\\n}}"
   }},
+  "optimal_solution_python": "class Solution:\\n    def solve(self):\\n        # complete working solution code",
+  "optimal_solution_cpp": "class Solution {{\\npublic:\\n    void solve() {{\\n        // complete working solution code\\n    }}\\n}};",
+  "optimal_solution_java": "class Solution {{\\n    public void solve() {{\\n        // complete working solution code\\n    }}\\n}}",
   "sample_test_cases": [
     {{
       "input": "sample input string",
@@ -653,7 +656,10 @@ Return ONLY a valid JSON object matching this exact schema without markdown form
             starter_code=problem_data.get("starter_code", {}),
             sample_test_cases=problem_data.get("sample_test_cases", []),
             hidden_test_cases=problem_data.get("sample_test_cases", []),
-            dry_run_steps=problem_data.get("dry_run_steps", [])
+            dry_run_steps=problem_data.get("dry_run_steps", []),
+            optimal_solution_python=problem_data.get("optimal_solution_python"),
+            optimal_solution_cpp=problem_data.get("optimal_solution_cpp"),
+            optimal_solution_java=problem_data.get("optimal_solution_java")
         )
 
         db.add(new_p)
@@ -695,10 +701,37 @@ def run_code(execution: schemas.CodeExecution, db: Session = Depends(get_db)):
         for idx, input_str in enumerate(execution.custom_inputs):
             matching_expected = ""
             sample_cases = problem.sample_test_cases or []
-            if matching_tc := next((tc for tc in sample_cases if tc.get("input", "").strip() == input_str.strip()), None):
+            
+            # 1. Try matching with predefined sample case input exactly
+            matching_tc = next((tc for tc in sample_cases if tc.get("input", "").strip() == input_str.strip()), None)
+            if matching_tc:
                 matching_expected = matching_tc.get("expected", "")
-            elif idx < len(sample_cases):
-                matching_expected = sample_cases[idx].get("expected", "")
+            else:
+                # 2. Compute dynamic expected answer using language-matched reference solution
+                lang = execution.language.lower()
+                ref_solution = None
+                if lang == "python":
+                    ref_solution = problem.optimal_solution_python
+                elif lang == "cpp":
+                    ref_solution = problem.optimal_solution_cpp
+                elif lang == "java":
+                    ref_solution = problem.optimal_solution_java
+                
+                if ref_solution:
+                    try:
+                        ref_data = execute_code_natively(ref_solution, lang, input_str, 2.0)
+                        ref_run = ref_data.get("run", {})
+                        ref_stdout = ref_run.get("stdout", "")
+                        _, ref_expected = parse_execution_stdout(ref_stdout)
+                        ref_expected = ref_expected.strip()
+                        if ref_expected:
+                            matching_expected = ref_expected
+                        else:
+                            matching_expected = "N/A (Reference returned empty)"
+                    except Exception as e:
+                        matching_expected = f"N/A (Reference Exception: {str(e)})"
+                else:
+                    matching_expected = "N/A (Custom Test Case)"
             
             test_cases_to_run.append({
                 "input": input_str,

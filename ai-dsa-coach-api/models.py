@@ -30,6 +30,9 @@ class Problem(Base):
     # Code Execution Data
     supported_languages = Column(JSONB, default=["python", "cpp", "java"])
     starter_code = Column(JSONB, nullable=False)
+    optimal_solution_python = Column(String, nullable=True)
+    optimal_solution_cpp = Column(String, nullable=True)
+    optimal_solution_java = Column(String, nullable=True)
     
     # Test Cases & Dry Run Steps
     sample_test_cases = Column(JSONB, nullable=False) # examples

@@ -155,6 +155,9 @@ JSON SCHEMA BLUEPRINT (Strictly include ALL fields for each object):
       "cpp": "class Solution {{\\npublic:\\n    vector<int> twoSum(vector<int>& nums, int target) {{\\n        return {{}};\\n    }}\\n}};",
       "java": "class Solution {{\\n    public int[] twoSum(int[] nums, int target) {{\\n        return new int[]{{}};\\n    }}\\n}}"
     }},
+    "optimal_solution_python": "class Solution:\\n    def twoSum(self, nums: List[int], target: int) -> List[int]:\\n        seen = {}\\n        for i, x in enumerate(nums):\\n            if target - x in seen: return [seen[target - x], i]\\n            seen[x] = i\\n        return []",
+    "optimal_solution_cpp": "class Solution {{\\npublic:\\n    vector<int> twoSum(vector<int>& nums, int target) {{\\n        unordered_map<int, int> seen;\\n        for (int i = 0; i < nums.size(); ++i) {{\\n            int comp = target - nums[i];\\n            if (seen.count(comp)) return {{seen[comp], i}};\\n            seen[nums[i]] = i;\\n        }}\\n        return {{}};\\n    }}\\n}};",
+    "optimal_solution_java": "class Solution {{\\n    public int[] twoSum(int[] nums, int target) {{\\n        Map<Integer, Integer> seen = new HashMap<>();\\n        for (int i = 0; i < nums.length; ++i) {{\\n            int comp = target - nums[i];\\n            if (seen.containsKey(comp)) return new int[]{{seen.get(comp), i}};\\n            seen.put(nums[i], i);\\n        }}\\n        return new int[]{{}};\\n    }}\\n}}",
     "sample_test_cases": [
       {{
         "input": "nums = [2, 7, 11, 15], target = 9",
@@ -295,7 +298,10 @@ def transform_to_db_record(prob: Dict[str, Any]) -> Dict[str, Any]:
         "starter_code": starter_code,
         "sample_test_cases": sample_cases,
         "hidden_test_cases": hidden_cases,
-        "dry_run_steps": dry_run_steps
+        "dry_run_steps": dry_run_steps,
+        "optimal_solution_python": prob.get("optimal_solution_python"),
+        "optimal_solution_cpp": prob.get("optimal_solution_cpp"),
+        "optimal_solution_java": prob.get("optimal_solution_java")
     }
 
 def insert_into_database(supabase_client, db_session, problems_json: List[Dict[str, Any]]):

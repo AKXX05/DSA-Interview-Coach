@@ -16,26 +16,46 @@
 
 <br>
 
-An interactive, full-stack Data Structures and Algorithms (DSA) platform that goes beyond standard code execution. Built to simulate a real engineering interview, it features a **Socratic AI coach** that guides users through optimal time/space complexity trade-offs — without ever spoiling the solution.
+An interactive, full-stack Data Structures and Algorithms (DSA) platform engineered to outpace standard coding sites. Built to simulate a real engineering interview, it trains developers to reason through time/space complexity trade-offs, draft algorithms, and perform under pressure—all guided by a Socratic AI coach that never spoils the solution.
+
+### 📊 How We Compare
+
+| Feature | Standard Coding Platforms | Our DSA Platform |
+| :--- | :--- | :--- |
+| **Primary Goal** | Passing hidden test cases | Passing the real technical interview |
+| **Workflow** | Jump straight to writing code | Algorithm-first drafting & pseudocode |
+| **When You Get Stuck** | Read spoiler solutions or forums | Socratic AI Coach provides tailored Big-O hints |
+| **Execution Engine** | Sluggish third-party APIs (1–3s latency) | Native OS-level subprocess compilation (<100ms) |
+| **Editor Experience** | Basic web text boxes | Integrated Monaco Editor (VS Code engine) |
+| **Time Management** | Infinite time, trial and error | Built-in pressure timers for interview simulation |
 
 ---
 
 ## ✨ Core Features
 
-- **⚡ Native Internal Execution Engine** — Zero-latency code execution engine using OS-level subprocess compilation. Drops execution latency down to **~100ms** and removes all third-party API dependencies.
-- **🤖 Socratic AI Coaching Layer** — Powered by the Gemini API and strictly validated with Pydantic. The AI analyzes syntax and logic to deliver step-by-step algorithmic hints and complexity breakdowns, acting as a technical interviewer rather than an answer key.
-- **💻 Pro-Grade IDE Experience** — Integrated Monaco Editor (the engine behind VS Code) with debounced state management for seamless syntax highlighting and live auto-completion, without blocking the main UI thread.
-- **🚄 High-Performance Data Layer** — Sub-50ms data retrieval for problem metadata and submission histories, backed by heavily indexed PostgreSQL queries.
+### 🎯 The Interview Simulator
+* **Structured Algorithm Drafting**: Forces users to slow down and write out their approach and pseudocode before touching the code editor—mirroring the whiteboard phase of a real tech interview.
+* **Pressure-Tested Environment**: Built-in interview timers and custom test-case runners train users to manage their time and test their own logic under constraints.
 
-## 🏗️ System Architecture
+### 📚 Comprehensive Topic Coverage
+Features a meticulously curated catalog of fundamental and advanced DSA problems spanning every crucial interview topic, organized for progressive mastery:
+* **Core Data Structures**: Arrays, Strings, Linked Lists, Stacks, Queues, Binary Trees, BSTs, Heaps, and Graphs.
+* **Algorithmic Patterns**: Two Pointers, Sliding Window, Prefix Sum, Binary Search, Sorting, Recursion, Greedy, and Divide & Conquer.
+* **Advanced Techniques**: Dynamic Programming (DP), DFS, BFS, Backtracking, Bit Manipulation, DSU (Disjoint Set Union), Combinatorics, Number Theory, and Mathematics.
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| **Frontend** | Next.js, Tailwind CSS, Monaco Editor | Responsive, non-blocking IDE experience and dynamic UI |
-| **Backend** | FastAPI, Python | Execution routing, Pydantic validation, AI orchestration |
-| **Execution Engine** | Native Subprocess / OS-level Compilers (g++, Python3, OpenJDK) | Zero-latency local execution without third-party API limits |
-| **Database** | Supabase (PostgreSQL) | Stores problem sets, user state, and submission histories |
-| **Deployment** | Vercel (Web), Railway (API) | CI/CD pipelines for zero-downtime, scalable hosting |
+### 🤖 Socratic AI Coaching Layer
+* **Zero-Spoiler Guidance**: Powered by the Gemini API and strictly validated with Pydantic. The AI analyzes syntax and logic to deliver step-by-step algorithmic hints and Big-O complexity breakdowns, acting as a true senior interviewer rather than a simple answer key.
+
+### 💻 Pro-Grade IDE Experience
+* **VS Code in the Browser**: Integrated Monaco Editor with debounced state management for seamless syntax highlighting, multi-language support (Python, C++, Java), and live auto-completion, without blocking the main UI thread.
+
+### ⚡ Native Internal Execution Engine
+* **Zero-Latency Sandboxing**: Bypasses sluggish external APIs by using OS-level subprocess compilation (Python3, g++, OpenJDK). Drops code execution latency down to **~100ms** for instant feedback on custom test cases.
+
+### 🚄 High-Performance Data Layer
+* **Optimized Queries**: Sub-50ms data retrieval for problem metadata, test cases, and user submission histories, backed by heavily indexed PostgreSQL queries.
+
+---
 
 ## 🚀 Getting Started
 
