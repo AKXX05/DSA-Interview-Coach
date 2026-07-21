@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --font-mono: var(--font-fira-code), monospace;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
   }
 }
 
-body {
-  background: var(--background);
+html, body {
+  overscroll-behavior: none;
+  background-color: #ffffff;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.15s ease-in-out;
+}
+
+html.dark, body.dark {
+  background-color: #0B0F19 !important;
+  color: #f1f5f9 !important;
+}
+
+/* --- ALWAYS-VISIBLE HIGH CONTRAST SCROLLBAR SLIDERS --- */
+::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+  display: block !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.1) !important;
+  border-radius: 5px !important;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.6) !important;
+  border-radius: 5px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f59e0b !important;
+  border-radius: 5px !important;
+  border: 2px solid transparent !important;
+  background-clip: content-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706 !important;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #f59e0b !important;
+  border-radius: 5px !important;
+  border: 2px solid transparent !important;
+  background-clip: content-box !important;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #fbbf24 !important;
+}
+
+/* --- MONACO EDITOR CUSTOM SCROLLBAR OVERRIDES --- */
+.monaco-editor .invisible {
+  visibility: visible !important;
+}
+
+.monaco-editor .scrollbar {
+  background: rgba(15, 23, 42, 0.05) !important;
+}
+
+.dark .monaco-editor .scrollbar {
+  background: rgba(31, 41, 55, 0.5) !important;
+}
+
+.monaco-editor .scrollbar .slider {
+  background: rgba(245, 158, 11, 0.6) !important;
+  border-radius: 5px !important;
+}
+
+.monaco-editor .scrollbar .slider:hover {
+  background: rgba(245, 158, 11, 0.95) !important;
+}
+
+.monaco-editor .scrollbar .slider.active {
+  background: #d97706 !important;
+}
+
+/* Custom Glassmorphism Utility Classes */
+.glass-panel-dark {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.glass-locked {
+  backdrop-filter: blur(8px);
+}
+
+/* Pulsing Status Dot */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 8px #16a34a;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+    box-shadow: 0 0 14px #16a34a;
+  }
+}
+
+.status-pulse {
+  animation: pulseGlow 2s infinite ease-in-out;
 }

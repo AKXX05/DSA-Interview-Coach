@@ -3,6 +3,12 @@ from typing import List, Dict, Any, Optional
 from datetime import datetime
 
 # Input Schema for code execution
+class CodeExecution(BaseModel):
+    problem_id: int
+    code: str
+    language: str
+    custom_inputs: Optional[List[str]] = None
+
 class CodeSubmission(BaseModel):
     problem_id: int
     code: str
@@ -26,6 +32,12 @@ class ProblemResponse(BaseModel):
     created_at: datetime
 
     class Config:
-        # Pydantic v2: use from_attributes = True
-        # Pydantic v1: use orm_mode = True
         from_attributes = True
+
+# Request schema for the AI coach endpoint
+class CoachRequest(BaseModel):
+    problem_id: int
+    code: str
+    language: str
+    chat_history: List[Dict[str, str]]
+    console_output: Optional[str] = None
